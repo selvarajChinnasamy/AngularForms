@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>User Details</h2>
+  <form [formGroup]="form" (ngSubmit)="SubmitForm(form.value)" class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input formControlName="email" type="text" class="form-control" placeholder="Enter email">
+      </div>
+      <p *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched " class="form-error-msg text-danger">Required</p>
+      <p *ngIf="form.controls['email'].hasError('email') && form.controls['email'].touched " class="form-error-msg text-danger">not a valid Email.</p>
+    </div>
+      <div class="form-group">
+      <label class="control-label col-sm-2">Password:</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
+      </div>
+      <p *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched " class="form-error-msg text-danger">Required</p>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">To:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="email1" placeholder="Send email to.">
+      </div>
+      <p *ngIf="form.controls['email1'].hasError('required') && form.controls['email1'].touched " class="form-error-msg text-danger">Required</p>
+       <p *ngIf="form.controls['email1'].hasError('email') && form.controls['email1'].touched " class="form-error-msg text-danger">not a valid Email.</p>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Text:</label>
+      <div class="col-sm-10">
+        <input type="text" formControlName="text" class="form-control" placeholder="Enter some text to send...">
+      </div>
+      <p *ngIf="form.controls['text'].hasError('required') && form.controls['text'].touched " class="form-error-msg text-danger">Required</p>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Subject:</label>
+      <div class="col-sm-10">
+        <select class="form-control" formControlName="subject">
+    <option value="angular">Angular</option>
+    <option value="angularjs">AngularJs</option>
+    <option value="node">Node</option>
+    <option value="mysql">MySql</option>
+  </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button [disabled]="!form.valid" type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
